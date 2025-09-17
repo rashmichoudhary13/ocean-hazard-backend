@@ -1,0 +1,8 @@
+# Google Cloud credentials
+serviceAccountKey.json
+
+# Node.js dependencies
+node_modules
+
+# Environment variables
+.env
