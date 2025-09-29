@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/api-docs",
+      "dest": "/api/docs.js"
+    }
+  ]
+}

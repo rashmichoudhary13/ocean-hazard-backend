@@ -30,7 +30,7 @@ const verifyIncoisApiKey = require('./middleware/verifyIncoisApiKey');
 const { startScheduler } = require('../scheduler');
 
 const app = express();
-const server = http.createServer(app);
+
 
 // --- Setup Socket.IO ---
 const io = new Server(server, {
@@ -134,4 +134,4 @@ startScheduler();
 
 // --- Start Server ---
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+module.exports = app;
