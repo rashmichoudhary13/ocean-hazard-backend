@@ -1,24 +1,23 @@
+import express from "express";
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
-import express from "express";
 
-// Swagger config
+const app = express();
+
 const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "My API",
+      title: "Ocean Hazard API Docs",
       version: "1.0.0",
     },
   },
-  apis: ["./src/routes/*.js"], // adjust path to your JSDoc comments
+  apis: ["./src/routes/*.js"], // adjust if your route files are elsewhere
 };
 
 const swaggerSpec = swaggerJSDoc(options);
 
-// Create express app
-const app = express();
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Export as Vercel serverless handler
+// Vercel requires default export
 export default app;
