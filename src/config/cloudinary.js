@@ -13,7 +13,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'ocean-hazard-reports', // This will create a folder in Cloudinary for your files
-    allowed_formats: ['jpeg', 'png', 'jpg', 'mp4'], // Specify allowed file types
+    allowed_formats: ['jpg', 'png', 'jpeg', 'mp4', 'mov', 'webp'], // Specify allowed file types
   },
 });
 

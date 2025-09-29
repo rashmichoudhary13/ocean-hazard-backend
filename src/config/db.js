@@ -2,8 +2,15 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    // Note: The useNewUrlParser and useUnifiedTopology options are no longer necessary in Mongoose 6.0 and above.
-    await mongoose.connect("mongodb://127.0.0.1:27017/oceanHazard");
+    // ✨ FIX: Use the MONGO_URI from your .env file
+    const connectionString = process.env.MONGO_URI;
+
+    if (!connectionString) {
+      throw new Error("MONGO_URI is not defined in the .env file.");
+    }
+
+    await mongoose.connect(connectionString);
+    
     console.log("✅ MongoDB connected");
   } catch (error) {
     console.error("❌ MongoDB connection failed:", error.message);
@@ -13,3 +20,4 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+
