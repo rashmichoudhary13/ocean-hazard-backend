@@ -1,7 +1,8 @@
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
-import { createServer } from "@vercel/node";
+import express from "express";
 
+// Swagger config
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -10,15 +11,14 @@ const options = {
       version: "1.0.0",
     },
   },
-  apis: ["./routes/*.js"], // adjust to where your route comments live
+  apis: ["./src/routes/*.js"], // adjust path to your JSDoc comments
 };
 
 const swaggerSpec = swaggerJSDoc(options);
 
-export default createServer((req, res) => {
-  if (req.url === "/api-docs") {
-    return swaggerUi.setup(swaggerSpec)(req, res);
-  }
-  res.statusCode = 404;
-  res.end("Not Found");
-});
+// Create express app
+const app = express();
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// Export as Vercel serverless handler
+export default app;

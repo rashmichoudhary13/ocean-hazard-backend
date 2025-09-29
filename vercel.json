@@ -1,9 +1,9 @@
 {
   "version": 2,
+  "builds": [
+    { "src": "api/docs.js", "use": "@vercel/node" }
+  ],
   "routes": [
-    {
-      "src": "/api-docs",
-      "dest": "/api/docs.js"
-    }
+    { "src": "/api-docs", "dest": "/api/docs.js" }
   ]
 }
